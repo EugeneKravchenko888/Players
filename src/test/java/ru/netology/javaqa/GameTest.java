@@ -7,12 +7,12 @@ class GameTest {
     @Test
     public void testRoundFirstWin() {
         Game game = new Game();
-        Player player1 = new Player(1, "Harald", 800);
-        Player player2 = new Player(2, "Astrid", 500);
+        Player player1 = new Player(1, "Robin", 800);
+        Player player2 = new Player(2, "Molly", 500);
         game.register(player1);
         game.register(player2);
 
-        int actual = game.round("Harald", "Astrid");
+        int actual = game.round("Robin", "Molly");
         int expected = 1;
         Assertions.assertEquals(expected, actual);
     }
@@ -20,12 +20,12 @@ class GameTest {
     @Test
     public void testRoundSecondWin() {
         Game game = new Game();
-        Player player1 = new Player(1, "Harald", 80);
-        Player player2 = new Player(2, "Astrid", 500);
+        Player player1 = new Player(1, "Robin", 80);
+        Player player2 = new Player(2, "Molly", 500);
         game.register(player1);
         game.register(player2);
 
-        int actual = game.round("Harald", "Astrid");
+        int actual = game.round("Robin", "Molly");
         int expected = 2;
         Assertions.assertEquals(expected, actual);
     }
@@ -33,12 +33,12 @@ class GameTest {
     @Test
     public void testRoundNoOneWin() {
         Game game = new Game();
-        Player player1 = new Player(1, "Harald", 80);
-        Player player2 = new Player(2, "Astrid", 80);
+        Player player1 = new Player(1, "Robin", 80);
+        Player player2 = new Player(2, "Molly", 80);
         game.register(player1);
         game.register(player2);
 
-        int actual = game.round("Harald", "Astrid");
+        int actual = game.round("Robin", "Molly");
         int expected = 0;
         Assertions.assertEquals(expected, actual);
     }
@@ -46,21 +46,21 @@ class GameTest {
     @Test
     public void testRoundNoPlayer2() {
         Game game = new Game();
-        Player player1 = new Player(1, "Harald", 80);
+        Player player1 = new Player(1, "Robin", 80);
         game.register(player1);
         Assertions.assertThrows(NotRegisteredException.class, () -> {
-            game.round("Harald", "Astrid");
+            game.round("Robin", "Molly");
         });
     }
 
     @Test
     public void testRoundNoPlayer1() {
         Game game = new Game();
-        Player player2 = new Player(2, "Astrid", 80);
+        Player player2 = new Player(2, "Molly", 80);
         game.register(player2);
 
         Assertions.assertThrows(NotRegisteredException.class, () -> {
-            game.round("Harald", "Astrid");
+            game.round("Robin", "Molly");
         });
     }
 
@@ -68,7 +68,7 @@ class GameTest {
     public void testRoundNoPlayers() {
         Game game = new Game();
         Assertions.assertThrows(NotRegisteredException.class, () -> {
-            game.round("Harald", "Astrid");
+            game.round("Robin", "Molly");
         });
     }
 }
